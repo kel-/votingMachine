@@ -23,17 +23,17 @@
         var inp  = $('#first input');
         var form = $('#first form');
 
-        var print = function(m, p) {
-            div.append($("<code>").text(m + ' ' + p));
+        var print = function(p) {
+            div.append($("<code>").text(p));
             div.append($("<br>"));
         };
 
-        sockjs.onopen    = function()  {print('[*] open', sockjs.protocol);};
-        sockjs.onmessage = function(e) {print('[.] message', e.data);};
+        sockjs.onopen    = function()  {print(sockjs.protocol);};
+        sockjs.onmessage = function(e) {print(e.data);};
         sockjs.onclose   = function()  {print('[*] close');};
 
         form.submit(function() {
-            print('[ ] sending', inp.val());
+            print(inp.val());
             sockjs.send(inp.val());
             return false;
         });
