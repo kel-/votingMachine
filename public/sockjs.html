@@ -5,6 +5,10 @@
     <!-- <style>
     </style> -->
 </head><body lang="en">
+<<<<<<< HEAD
+=======
+    <h1>votingMachine example</h1>
+>>>>>>> 69fc7284e57582abf523356033aeeadc10f1500f
 
     <div id="first" class="box">
      <div></div>
@@ -13,8 +17,18 @@
       </form>
 
     </div>
-
+    <div>
+    <button>john</button>
+    <button>paul</button>
+    <button>ringo</button>
+    <button>george</button>
+    <button>none</button>
+    </div>
     <script>
+     $(function() {
+        $("button").click(function(){
+        sockjs.send($(this).text());
+        })
         var sockjs_url = '/tally';
         var sockjs = new SockJS(sockjs_url);
         $('#first input').focus();
@@ -28,8 +42,16 @@
             div.append($("<br>"));
         };
 
+<<<<<<< HEAD
         sockjs.onopen    = function()  {print(sockjs.protocol);};
         sockjs.onmessage = function(e) {print(e.data);};
+=======
+        sockjs.onopen    = function()  {
+          print('[*] open', sockjs.protocol);
+          sockjs.send('_openned');
+        };
+        sockjs.onmessage = function(e) {print('[.] message', e.data);};
+>>>>>>> 69fc7284e57582abf523356033aeeadc10f1500f
         sockjs.onclose   = function()  {print('[*] close');};
 
         form.submit(function() {
@@ -37,6 +59,7 @@
             sockjs.send(inp.val());
             return false;
         });
+<<<<<<< HEAD
 
         var votes = [];
 
@@ -48,5 +71,8 @@
           return votes.length;
         }
 
+=======
+ })
+>>>>>>> 69fc7284e57582abf523356033aeeadc10f1500f
     </script>
 </body></html>
