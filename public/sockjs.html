@@ -8,7 +8,7 @@
 
     <div id="first" class="box">
      <div></div>
-      <form name="input" action="html_form_action.asp" method="get">
+      <form method="get">
         <input type="submit" value="CLAP">
       </form>
 
@@ -37,6 +37,16 @@
             sockjs.send(inp.val());
             return false;
         });
+
+        var votes = [];
+
+        addVote(v){
+
+        }
+
+        getVoteCount() {
+          return votes.length;
+        }
 
     </script>
 </body></html>
